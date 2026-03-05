@@ -4,3 +4,4 @@ openai
 tiktoken
 python-dotenv
 litellm
+gradio
