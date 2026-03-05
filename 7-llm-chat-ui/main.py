@@ -30,9 +30,6 @@ system_message = "You are a helpful assistant"
 
 #-----------------GPT------------------------------------------------
 
-message_input = gr.Textbox(label="Your message:", info="Enter a message for the Gpt-4.1-mini", lines=7)
-message_output = gr.Markdown(label="Response:")
-
 def message_gpt(prompt):
     messages = [
         {"role": "system", "content": system_message},
@@ -68,22 +65,6 @@ def message_ollama(prompt):
         yield result
 
 
-message_input = gr.Textbox(label="Your message:", info="Enter a message for llama 3.2", lines=7)
-message_output = gr.Markdown(label="Response:")
-
-view = gr.Interface(
-    fn=message_ollama,
-    title="Ollama", 
-    inputs=[message_input], 
-    outputs=[message_output], 
-    examples=[
-        "Explain the Transformer architecture to a layperson",
-        "Explain the Transformer architecture to an aspiring AI engineer",
-        ], 
-    flagging_mode="never"
-    )
-view.launch(inbrowser=True, auth=(DEMO_USERNAME, DEMO_PASSWORD))
-
 #--------------------------------------------------------------------------------------------------
 
 def stream_model(prompt, model):
@@ -112,4 +93,4 @@ view = gr.Interface(
         ], 
     flagging_mode="never"
     )
-view.launch()
+view.launch(inbrowser=True, auth=(DEMO_USERNAME, DEMO_PASSWORD))
