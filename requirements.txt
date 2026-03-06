@@ -6,3 +6,4 @@ python-dotenv
 litellm
 gradio
 sqlite3
+pillow
