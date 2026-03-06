@@ -1,0 +1,94 @@
+import os
+import json
+from dotenv import load_dotenv
+from openai import OpenAI
+import gradio as gr
+from database import price_setter
+import sqlite3
+
+OPENAI_MODEL = "gpt-4o-mini"
+
+load_dotenv(override=True)
+openai_api_key = os.getenv('OPENAI_API_KEY')
+
+
+if not openai_api_key:
+    raise ValueError("OpenAI API key not found")
+
+openai = OpenAI()
+
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+DB = os.path.join(BASE_DIR, "prices.db")
+
+# Initialize the database with prices
+price_setter()
+
+
+
+system_message = """
+You are a helpful assistant for an Airline called FlightAI.
+Give short, courteous answers, no more than 1 sentence.
+Always be accurate. If you don't know the answer, say so.
+"""
+
+
+ticket_prices = {"london": "$799", "paris": "$899", "tokyo": "$1400", "berlin": "$499"}
+
+def get_ticket_price(city):
+    print(f"DATABASE TOOL CALLED: Getting price for {city}", flush=True)
+    with sqlite3.connect(DB) as conn:
+        cursor = conn.cursor()
+        cursor.execute('SELECT price FROM prices WHERE city = ?', (city.lower(),))
+        result = cursor.fetchone()
+        return f"Ticket price to {city} is ${result[0]}" if result else "No price data available for this city"
+    
+# The Json describes the function to the LLM
+price_function = {
+    "name": "get_ticket_price",
+    "description": "Get the price of a return ticket to the destination city.",
+    "parameters": {
+        "type": "object",
+        "properties": {
+            "destination_city": {
+                "type": "string",
+                "description": "The city that the customer wants to travel to",
+            },
+        },
+        "required": ["destination_city"],
+        "additionalProperties": False
+    }
+}
+
+tools = [{"type": "function", "function": price_function}]
+
+def chat(message, history):
+    history = [{"role":h["role"], "content":h["content"]} for h in history]
+    messages = [{"role": "system", "content": system_message}] + history + [{"role": "user", "content": message}]
+    response = openai.chat.completions.create(model=OPENAI_MODEL, messages=messages, tools=tools)
+
+    while response.choices[0].finish_reason=="tool_calls":
+        message = response.choices[0].message
+        responses = handle_tool_calls(message)
+        messages.append(message)
+        messages.extend(responses)
+        response = openai.chat.completions.create(model=OPENAI_MODEL, messages=messages, tools=tools)
+    
+    return response.choices[0].message.content
+
+
+def handle_tool_calls(message):
+    responses = []
+    for tool_call in message.tool_calls:
+        if tool_call.function.name == "get_ticket_price":
+            arguments = json.loads(tool_call.function.arguments)
+            city = arguments.get('destination_city')
+            price_details = get_ticket_price(city)
+            responses.append({
+                "role": "tool",
+                "content": price_details,
+                "tool_call_id": tool_call.id
+            })
+    return responses
+
+gr.ChatInterface(fn=chat).launch(inbrowser=True)
