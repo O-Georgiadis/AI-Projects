@@ -1,25 +1,26 @@
 # Flight Booking Chatbot
 
-An AI-powered airline booking assistant using OpenAI function calling and SQLite.
+A multimodal AI assistant for an airline using OpenAI's latest capabilities.
 
-## What It Does
+## Features
 
-- Chat interface for airline ticket bookings
-- LLM uses function calling to query real prices from SQLite database
-- Demonstrates tool-augmented AI agents
-- Built with Gradio
+- **Chat Interface** — Book flights via conversation
+- **Function Calling** — Real-time database queries (SQLite)
+- **Image Generation** — DALL-E 3 generates destination images
+- **Text-to-Speech** — Voice output for responses
+- **Gradio UI** — Clean web interface
 
 ## Tech Stack
 
 - Python
-- OpenAI GPT-4o-mini (function calling)
+- OpenAI GPT-4o-mini + DALL-E 3 + TTS
 - SQLite
 - Gradio
 
 ## Requirements
 
 - OpenAI API key
-- Python packages: openai, gradio
+- packages: openai, gradio, pillow
 
 ## Usage
 
