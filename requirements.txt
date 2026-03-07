@@ -7,3 +7,10 @@ litellm
 gradio
 sqlite3
 pillow
+torch
+transformers
+diffusers
+datasets
+soundfile
+huggingface_hub
+gradio
