@@ -33,4 +33,3 @@ def main():
 if __name__ == "__main__":
     main()
 
-# yield from {book.get('author') for book in books if book.get('author')}

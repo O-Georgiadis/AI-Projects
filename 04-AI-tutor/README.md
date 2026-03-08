@@ -12,6 +12,7 @@ An AI-powered tool that explains any Python code using local LLMs (Ollama).
 
 - Python 3.8+
 - Ollama running locally
+- openai
 
 ## Usage
 
