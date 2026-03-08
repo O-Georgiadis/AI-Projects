@@ -14,6 +14,7 @@ An AI-powered tool that scrapes a company website and generates a professional b
 - Python 3.8+
 - OpenAI API key
 - BeautifulSoup (for scraping)
+- openai
 
 ## Usage
 
