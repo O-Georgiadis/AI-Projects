@@ -15,6 +15,7 @@ A web-based chat interface built with Gradio to interact with GPT and Ollama mod
 - Gradio
 - OpenAI API key
 - Ollama running locally
+- openai
 
 ## Usage
 
