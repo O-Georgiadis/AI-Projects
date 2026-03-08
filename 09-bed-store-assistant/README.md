@@ -15,6 +15,7 @@ A Gradio-based AI chatbot for a bed and mattress store.
 - Python 3.8+
 - Gradio
 - OpenAI API key
+- openai
 
 ## Usage
 
