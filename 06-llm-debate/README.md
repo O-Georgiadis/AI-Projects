@@ -13,6 +13,7 @@ An experiment comparing different LLM personalities by having two chatbots debat
 - Python 3.8+
 - OpenAI API key
 - Ollama running locally
+- openai
 
 ## Usage
 
