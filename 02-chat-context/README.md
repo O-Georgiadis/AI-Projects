@@ -12,7 +12,8 @@ A simple experiment exploring tokenization and chat context with LLMs.
 
 - Python 3.8+
 - tiktoken
-- Ollama running locally
+- Ollama running locall
+- openai
 
 ## Usage
 
