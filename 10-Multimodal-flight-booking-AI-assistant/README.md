@@ -20,7 +20,9 @@ A multimodal AI assistant for an airline using OpenAI's latest capabilities.
 ## Requirements
 
 - OpenAI API key
-- packages: openai, gradio, pillow
+- openai
+- gradio
+- pillow
 
 ## Usage
 
