@@ -16,6 +16,7 @@ A web-based interface for generating AI-powered company brochures using Gradio.
 - Gradio
 - OpenAI API key (for GPT)
 - Ollama running locally (optional)
+- openai
 
 ## Usage
 
