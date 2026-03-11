@@ -1,6 +1,6 @@
 # Meeting Minutes Generator
 
-Transcribe audio and generate meeting minutes using local LLMs.
+Transcribe audio and generate meeting minutes using local LLMs from Hugging Face.
 
 ## What it does
 - Transcribe audio with OpenAI Whisper (local)
