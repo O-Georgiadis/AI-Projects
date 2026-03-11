@@ -15,4 +15,6 @@ Visualize what tokens an LLM predicts next using probability distributions.
 - networkx
 
 ## Usage
+
+```bash
 python main.py
