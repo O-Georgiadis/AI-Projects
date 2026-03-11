@@ -12,3 +12,5 @@ diffusers
 datasets
 soundfile
 huggingface_hub
+matplotlib
+networkx
