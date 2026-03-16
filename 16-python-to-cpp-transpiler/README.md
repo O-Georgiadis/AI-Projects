@@ -13,6 +13,7 @@ Convert Python code to high-performance C++ using AI.
 - Python 3.8+
 - openai
 - C++ compiler (detected automatically)
+- python-dotenv
 
 ## Usage
 ```bash

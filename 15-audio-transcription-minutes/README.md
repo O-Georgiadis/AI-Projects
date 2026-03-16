@@ -12,6 +12,7 @@ Transcribe audio and generate meeting minutes using local LLMs from Hugging Face
 - transformers
 - torch
 - huggingface-hub
+- python-dotenv
 
 ## Usage
 

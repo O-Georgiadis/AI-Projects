@@ -12,7 +12,7 @@ Basic Retrieval-Augmented Generation using keyword matching.
 - Python 3.8+
 - openai
 - gradio
-
+- python-dotenv
 
 ## Usage
 ```bash
