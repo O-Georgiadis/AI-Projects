@@ -5,3 +5,9 @@ __pycache__/
 .env
 certificate.pem
 .DS_Store
+
+# Vector databases
+vector_db/
+
+# Chroma artifacts
+*.sqlite3
