@@ -14,3 +14,12 @@ soundfile
 huggingface_hub
 matplotlib
 networkx
+numpy
+langchain
+langchain-openai
+langchain-chroma
+langchain-huggingface
+langchain-community
+langchain-text-splitters
+scikit-learn
+plotly

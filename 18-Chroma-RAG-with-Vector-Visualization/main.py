@@ -72,7 +72,7 @@ print(f"First chunk: \n\n{chunks[0]}")
 #===================== Vectorize and Store =============================================
 
 embeddings = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
-# embeddings = OpenAIEmbeddings(model="text-embedding-3-small")
+# embeddings = OpenAIEmbeddings(model="text-embedding-3-large")
 
 # If vector_db exists -> wipe it to start fresh
 if os.path.exists(db_name):
